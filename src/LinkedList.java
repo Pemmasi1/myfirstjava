@@ -25,6 +25,20 @@ public class LinkedList {
          return list;
      }
 
+     public static LinkedList reverse(LinkedList list) {
+         Node curr = list.head;
+         Node prev = null;
+         Node next = null;
+         while(curr != null) {
+             next = curr.next;
+             curr.next = prev;
+             prev = curr;
+             curr = next;
+         }
+         list.head = prev;
+         return list;
+     }
+
      public static void printList(LinkedList list) {
          Node currNode = list.head;
 
@@ -43,6 +57,10 @@ public class LinkedList {
         list = insert(list, 3);
         list = insert(list, 4);
         list = insert(list, 5);
+        printList(list);
+        list = reverse(list);
+
+        System.out.println("\nLinkedList After reversing");
 
         printList(list);
 
